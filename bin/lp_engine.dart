@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'package:lp_engine/lp_engine.dart';
+import 'package:lp_engine/src/polygons/triangle.dart';
 // import 'package:chalkdart/chalk.dart';
 
 enum Dir { stop, left, upleft, downleft, right, upright, downright }
@@ -315,7 +316,7 @@ void main(List<String> arguments) {
 
   GameManger g = GameManger(40, 20);
 
-  stdin
+  /*stdin
     ..lineMode = false
     ..echoMode = false;
 
@@ -328,19 +329,20 @@ void main(List<String> arguments) {
     g.logic();
     // if(codes[0] == 115)
     // print(codes);
-  });
+  });*/
 
   // print(c.getX);
 
   // print(chalk.yellow.onBlue('Hello world!'));
-  // Quadrilateral quadrilateral = Quadrilateral();
-  // TerminalLimits limits =
-  //     TerminalLimits(0, stdout.terminalColumns, stdout.terminalLines, 0);
-  // Court court = Court(limits);
+  Quadrilateral quadrilateral = Quadrilateral();
+  Triangle teste = Triangle();
+   TerminalLimits limits =
+       TerminalLimits(0, stdout.terminalColumns, stdout.terminalLines, 0);
+   Court court = Court(limits);
 
-  // if (stdout.hasTerminal) {
-  //   // court.create(limits);
-
-  //   quadrilateral.create(5, 3);
-  // }
+   if (stdout.hasTerminal) {
+      court.create(limits);
+    teste.create(3, '*');
+     quadrilateral.create(5, 3);
+   }
 }
