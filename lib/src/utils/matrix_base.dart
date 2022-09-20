@@ -48,8 +48,6 @@ class MatrixBase {
         _matrix[i] = '=';
       } else if (i > (_area - _width * 2)) {
         _matrix[i] = '=';
-      } else{
-        _matrix[i] = '1';
       }
     }
 

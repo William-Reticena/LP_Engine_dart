@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:lp_engine/lp_engine.dart';
 import 'package:lp_engine/src/utils/matrix_base.dart';
 
 void main(List<String> arguments) {
@@ -8,11 +9,18 @@ void main(List<String> arguments) {
   // TerminalLimits limits =
   //     TerminalLimits(0, stdout.terminalColumns, stdout.terminalLines, 0);
 
-  MatrixBase matrixBase =
-      MatrixBase(stdout.terminalColumns, stdout.terminalLines);
+  // MatrixBase matrixBase =
+  //     MatrixBase(stdout.terminalColumns, stdout.terminalLines);
 
-MatrixBase teste = MatrixBase(36, 22);
+  PongGame game = PongGame();
+  game.createPongCourt(stdout.terminalColumns, stdout.terminalLines);
+  game.teste();
 
-  List<String> teste1 = teste.create();
-  teste.print(teste1);
+
+
+  // MatrixBase teste = MatrixBase(36, 22);
+
+
+  // List<String> teste1 = teste.create();
+  // teste.print(teste1);
 }
