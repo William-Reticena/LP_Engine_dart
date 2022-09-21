@@ -25,38 +25,50 @@ import 'package:lp_engine/src/classes/terminal_limits.dart';
 
 class MatrixBase {
   final int _area;
-  late List<String> _matrix;
+  // late List<String> _matrix;
+  late List<List<String>> _matrix;
   late int _width;
+  late int _height;
 
   MatrixBase(int width, int height) : _area = width * height {
-    _matrix = List.filled(_area, ' ');
+    // _matrix = List.filled(_area, ' ');
+    // for (int i = 0; i < height; i++) {
+    _matrix = List.filled(height, List.filled(width, ' '));
+    // }
     _width = width;
+    _height = height;
+    print('$width $height');
   }
 
-  List<String> create() {
+  List<List<String>> create() {
     int leftSide = 0;
     int rightSide = _width - 1;
 
-    for (int i = 0; i < _area; i++) {
-      if (i == leftSide) {
-        _matrix[i] = '|';
-        leftSide += _width;
-      } else if (i == rightSide) {
-        _matrix[i] = '|';
-        rightSide += _width;
-      } else if (i < _width) {
-        _matrix[i] = '=';
-      } else if (i > (_area - _width * 2)) {
-        _matrix[i] = '=';
-      }
-    }
+    // _matrix[0][5] = 'g';
+
+    // for (int i = 0; i < _area; i++) {
+    // _matrix[i][0] = '1';
+    // if (i == leftSide) {
+    //   _matrix[i] = '|';
+    //   leftSide += _width;
+    // } else if (i == rightSide) {
+    //   _matrix[i] = '|';
+    //   rightSide += _width;
+    // } else if (i < _width) {
+    //   _matrix[i] = '=';
+    // } else if (i > (_area - _width * 2)) {
+    //   _matrix[i] = '=';
+    // }
+    // }
 
     return _matrix;
   }
 
-  void print(List<String> matrix) {
-    for (int i = 0; i < _area - _width; i++) {
-      stdout.write(matrix[i]);
+  void printf(List<List<String>> matrix) {
+    for (int i = 0; i < _height; i++) {
+      for (int j = 0; j < _width; j++) {
+        stdout.write(matrix[i][j]);
+      }
     }
   }
 }

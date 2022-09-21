@@ -12,15 +12,16 @@ void main(List<String> arguments) {
   // MatrixBase matrixBase =
   //     MatrixBase(stdout.terminalColumns, stdout.terminalLines);
 
-  PongGame game = PongGame();
-  game.createPongCourt(stdout.terminalColumns, stdout.terminalLines);
-  game.teste();
+  // PongGame game = PongGame();
+  // game.createPongCourt(stdout.terminalColumns, stdout.terminalLines);
+  // game.teste();
 
+  MatrixBase teste = MatrixBase(stdout.terminalColumns, stdout.terminalLines);
 
+  List<List<String>> teste1 = teste.create();
+  teste1[7][5] = '5';
 
-  // MatrixBase teste = MatrixBase(36, 22);
-
-
-  // List<String> teste1 = teste.create();
-  // teste.print(teste1);
+  teste1.map((element) => print(element));
+  // print(teste1[3][5]);
+  teste.printf(teste1);
 }
