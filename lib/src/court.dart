@@ -1,7 +1,4 @@
-// import 'dart:ffi';
-
-// import 'package:lp_engine/lp_engine.dart';
-// import 'package:lp_engine/src/utils/base.dart';
+import 'package:lp_engine/src/utils/matrix_base.dart';
 
 // class Court extends Base {
 //   final int top;
@@ -32,3 +29,9 @@
 //     createRow(left, right, '=', true);
 //   }
 // }
+
+class PongCourt extends MatrixBase {
+  PongCourt() {
+    
+  }
+}

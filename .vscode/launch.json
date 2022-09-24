@@ -7,7 +7,10 @@
     {
       "name": "bin/lp_engine.dart",
       "request": "launch",
-      "type": "dart"
+      "cwd": "${cwd}",
+      "type": "dart",
+      // "console": "debugConsole",
+      "program": "bin/lp_engine.dart"
     }
   ]
 }
