@@ -17,33 +17,39 @@ void main(List<String> arguments) {
   // PongGame game = PongGame();
   // game.createPongCourt(stdout.terminalColumns, stdout.terminalLines);
   // game.teste();
+  // MatrixBase base = MatrixBase(stdout.terminalColumns, stdout.terminalLines);
+  // Triangle tri = Triangle();
+  // tri.create(3, '*');
 
-  MatrixBase base = MatrixBase(stdout.terminalColumns, stdout.terminalLines);
-  Triangle tri = Triangle();
-  tri.create(3, '*');
-  
-  //teste1[7][5] = '5';
-  //teste.adicionar(7, 5, '5');
-  //MatrixBase aux = MatrixBase(10, 10);
-  /*aux.adicionar(0, 0, 'A');
-  aux.adicionar(1, 1, 'B');
-  aux.adicionar(2, 2, 'C');
-  aux.adicionar(3, 3, 'D');
-  aux.adicionar(4, 4, 'E');*/
-  //teste.show();
-  //aux.show();
-  //tri.objTomatrix(base, 5, 5);
-  //base.show();
+  PongCourt base = PongCourt();
+  MatrixBase court = base.create();
   Square quadrado = Square();
-  quadrado.create(5, 5, '*');
-  quadrado.objTomatrix(base, 5, 5);
-  base.show();
-  // print(teste1[3][5]);
-  //
+
+
+  base.addBall(quadrado);
+
+  // //teste1[7][5] = '5';
+  // //teste.adicionar(7, 5, '5');
+  // //MatrixBase aux = MatrixBase(10, 10);
+  // /*aux.adicionar(0, 0, 'A');
+  // aux.adicionar(1, 1, 'B');
+  // aux.adicionar(2, 2, 'C');
+  // aux.adicionar(3, 3, 'D');
+  // aux.adicionar(4, 4, 'E');*/
+  // //teste.show();
+  // //aux.show();
+  // //tri.objTomatrix(base, 5, 5);
+  //base.show();
+  // quadrado.create(5, 5, '*');
+  // quadrado.objTomatrix(court, 5, 5);
+    // print(Process.runSync("clear", [], runInShell: true).stdout);
+
+  // base.show();
+  // // print(teste1[3][5]);
+  // //
   //Moviment move = Moviment();
   //move.movimentTriangle(tri, base, 20, 20);
   //tri.objDelete(base); //delete esta funcionando
   //base.show();
   //print(Process.runSync("clear", [], runInShell: true).stdout);
-
 }
