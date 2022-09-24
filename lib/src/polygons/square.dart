@@ -12,19 +12,13 @@ class Square{
     _height = height;
     _width = width;
     carac = simbol;
-    for(int i = 0; i < height; i++){
-      for(int j = 0; j < width; j++){
-        stdout.write(simbol);
-      }
-      print('');
-    }
   }
 
   void objTomatrix(MatrixBase base, int x, int y){
     posX = x;
     posY = y;
-    for(int i = 0; i < _height; i++){
-      for(int j = 0; j < _width; j++){
+    for(int i = 0; i < _width; i++){
+      for(int j = 0; j < _height; j++){
         base.put(j + x, i + y, carac);
       } 
     }

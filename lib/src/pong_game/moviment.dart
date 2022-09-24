@@ -31,9 +31,6 @@ class Moviment{
         origemX++;
         origemY++;
         base.show(); //movimentação
-        //print("teste");
-        //print(Process.runSync("clear", [], runInShell: true).stdout);
-        //print("\x1B[2J\x1B[0;0H");
       }
     }
   }
