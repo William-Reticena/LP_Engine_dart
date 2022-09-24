@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:lp_engine/lp_engine.dart';
 import 'package:lp_engine/src/polygons/triangle.dart';
+import 'package:lp_engine/src/pong_game/moviment.dart';
 import 'package:lp_engine/src/utils/matrix_base.dart';
 
 void main(List<String> arguments) {
@@ -31,8 +32,18 @@ void main(List<String> arguments) {
   aux.adicionar(4, 4, 'E');*/
   //teste.show();
   //aux.show();
-  tri.objTomatrix(base, 5, 5);
+  //tri.objTomatrix(base, 5, 5);
+  //base.show();
+  Square quadrado = Square();
+  quadrado.create(5, 5, '*');
+  quadrado.objTomatrix(base, 5, 5);
   base.show();
   // print(teste1[3][5]);
   //
+  //Moviment move = Moviment();
+  //move.movimentTriangle(tri, base, 20, 20);
+  //tri.objDelete(base); //delete esta funcionando
+  //base.show();
+  //print(Process.runSync("clear", [], runInShell: true).stdout);
+
 }
