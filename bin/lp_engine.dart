@@ -18,10 +18,9 @@ void main(List<String> arguments) {
 
   MatrixBase teste = MatrixBase(stdout.terminalColumns, stdout.terminalLines);
 
-  
   //teste1[7][5] = '5';
   teste.adicionar(7, 5, '5');
-  MatrixBase aux = MatrixBase(10,10);
+  MatrixBase aux = MatrixBase(10, 10);
   aux.adicionar(0, 0, 'A');
   aux.adicionar(1, 1, 'B');
   aux.adicionar(2, 2, 'C');
@@ -30,5 +29,5 @@ void main(List<String> arguments) {
 
   aux.show();
   // print(teste1[3][5]);
-  
+  //
 }
