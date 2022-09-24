@@ -18,10 +18,17 @@ void main(List<String> arguments) {
 
   MatrixBase teste = MatrixBase(stdout.terminalColumns, stdout.terminalLines);
 
-  List<List<String>> teste1 = teste.create();
-  teste1[7][5] = '5';
+  
+  //teste1[7][5] = '5';
+  teste.adicionar(7, 5, '5');
+  MatrixBase aux = MatrixBase(10,10);
+  aux.adicionar(0, 0, 'A');
+  aux.adicionar(1, 1, 'B');
+  aux.adicionar(2, 2, 'C');
+  aux.adicionar(3, 3, 'D');
+  aux.adicionar(4, 4, 'E');
 
-  teste1.map((element) => print(element));
+  aux.show();
   // print(teste1[3][5]);
-  teste.printf(teste1);
+  
 }

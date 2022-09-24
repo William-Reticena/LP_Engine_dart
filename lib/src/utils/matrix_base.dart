@@ -21,16 +21,32 @@
 // }
 
 import 'dart:io';
+import 'dart:convert';
 import 'package:lp_engine/src/classes/terminal_limits.dart';
 
 class MatrixBase {
-  final int _area;
+  //final int _area;
   // late List<String> _matrix;
   late List<List<String>> _matrix;
   late int _width;
   late int _height;
 
-  MatrixBase(int width, int height) : _area = width * height {
+  MatrixBase(this._width, this._height){
+    _matrix = [];
+
+    for(int row = 0; row < _height; row++){
+      _matrix.add(List.filled(_width, ' '));
+    }
+  }
+
+  void add(int x, int y, String val){
+    _matrix[x][y] = val;
+  }
+  @override
+  String toString(){
+    return json.encode(_matrix);
+  }
+  /*MatrixBase(int width, int height) : _area = width * height {
     // _matrix = List.filled(_area, ' ');
     // for (int i = 0; i < height; i++) {
     _matrix = List.filled(height, List.filled(width, ' '));
@@ -63,12 +79,20 @@ class MatrixBase {
 
     return _matrix;
   }
-
-  void printf(List<List<String>> matrix) {
+  */
+  void show() {
     for (int i = 0; i < _height; i++) {
       for (int j = 0; j < _width; j++) {
-        stdout.write(matrix[i][j]);
+        stdout.write(_matrix[i][j]);
+        
       }
+      print('');
     }
+  }
+  void aa(){
+    print(_matrix[0][0]);
+  }
+  void adicionar(int x, int y, String key){
+      _matrix[x][y] = key;
   }
 }
