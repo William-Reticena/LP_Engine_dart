@@ -9,7 +9,7 @@
       "request": "launch",
       "cwd": "${cwd}",
       "type": "dart",
-      // "console": "debugConsole",
+      "console": "debugConsole",
       "program": "bin/lp_engine.dart"
     }
   ]
