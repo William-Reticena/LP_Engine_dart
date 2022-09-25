@@ -50,11 +50,12 @@ class PongCourt {
 
       _matrix.show();
     } else if (object is Triangle) {
-      object.create(6, '#');
+      int alt = 4;
+      object.create(alt, '#');
       int middleX = (_width / 2 - object.height / 2).ceil();
       int middleY = (_height / 2 - object.width / 2).ceil();
 
-      object.objTomatrix(_matrix, middleY, middleX);
+      object.objTomatrix(_matrix, middleY + alt ~/ 2, middleX - alt ~/ 2);
 
       _matrix.show();
     }
