@@ -119,7 +119,7 @@ class Moviment{
     }
   }
 
-  /*void movimentCircle(Circle obj, MatrixBase base, int x, int y){
+  void movimentCirlce(Circle obj, MatrixBase base, int x, int y){
     int origemX = obj.posX;
     int origemY = obj.posY;
     int finalX = obj.posX + x;
@@ -142,9 +142,10 @@ class Moviment{
         obj.objTomatrix(base, obj.posX + 1, obj.posY + 1);
         origemX++;
         origemY++;
-        base.show(); //movimentação
+        //base.show(); //movimentação
       }
-      if(origemX == finalX){
+    }
+    if(origemX == finalX){
       while(origemY != finalY){
         obj.objDelete(base);
         if(y > 0){
@@ -172,8 +173,7 @@ class Moviment{
       }
     }
     }
-    }
-  }*/
+  }
 }
 
 

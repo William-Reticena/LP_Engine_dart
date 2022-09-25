@@ -28,13 +28,17 @@ void main(List<String> arguments) {
   Square quadrado = Square();
   Triangle triangulo = Triangle();
 
-  Circle circulo = Circle();
-
-  // Circle().create(3, 1, 1, '.');
+  //Circle().create(4, 1, 1);
 
   // base.addBall(quadrado);
-  base.addBall(triangulo);
-
+  //base.addBall(triangulo);
+  Moviment move = Moviment();
+  Circle cir = Circle();
+  cir.create(2, 2, 2, '*');
+  cir.objTomatrix(court, 5, 5);
+  court.show();
+  move.movimentCirlce(cir, court, 2, 2);
+  court.show();
   // //teste1[7][5] = '5';
   // //teste.adicionar(7, 5, '5');
   // //MatrixBase aux = MatrixBase(10, 10);
@@ -54,18 +58,18 @@ void main(List<String> arguments) {
   // base.show();
   // // print(teste1[3][5]);
   // //
-  // Square teste = Square();
-  // teste.create(5, 5, '#');
-  // teste.objTomatrix(court, 10, 10);
-  // //court.show();
-  // Square teste_2 = Square();
-  // teste_2.create(5, 5, '#');
-  // teste_2.objTomatrix(court, 15, 15);
-
-  // Colision cod = Colision();
-  // cod.checkSquare(teste, court);
-  /*Moviment move = Moviment();
-  move.movimentSquare(teste, court, 2, 0);*/
+  /*Square teste = Square();
+  teste.create(5, 5, '#');
+  teste.objTomatrix(court, 10, 10);
+  court.show();
+  Square teste_2 = Square();
+  teste_2.create(5, 5, '#');
+  teste_2.objTomatrix(court, 10, 15);
+  court.show();
+  Colision cod = Colision();
+  cod.checkSquare(teste, court);*/
+  
+  //move.movimentSquare(teste, court, 2, 0);
   //court.show();
   //tri.objDelete(court); //delete esta funcionando
   //base.show();
