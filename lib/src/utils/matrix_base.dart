@@ -37,7 +37,7 @@ class MatrixBase {
   
   void show() {
     for (int i = 0; i < _height; i++) {
-      for (int j = 0; j < _width ; j++) {
+      for (int j = 0; j < _width; j++) {
         stdout.write(_matrix[i][j]);
       }
       print('');

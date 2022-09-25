@@ -1,28 +1,45 @@
 import 'dart:io';
 import 'dart:math';
+import 'package:lp_engine/src/utils/matrix_base.dart';
 
 class Circle {
-  void create(int radius, int lineWidth, double xScale) {
-    double hUnitsPerChar = 1 / xScale;
+  late int posX;
+  late int posY;
+  late int height;
+  late int width;
+  late String carac;
+  late double hUnitsPerChar;
+  late double center;
+  late double dist;
+  late int radius;
+  late double lineWidth_2;
+  late MatrixBase circ;
+
+  void create(int radius, int lineWidth, double xScale, String carac) {
+    hUnitsPerChar = 1 / xScale;
     double hChars = (2 * radius + lineWidth) / hUnitsPerChar;
     double vChars = (2 * radius + lineWidth).toDouble();
-    double dist;
-    double lineWidth_2 = lineWidth / 2;
-    double center = radius + lineWidth_2;
-    for (int j = 0; j <= vChars - 1; j++) {
+    lineWidth_2 = lineWidth / 2;
+    center = radius + lineWidth_2;
+    this.carac = carac;
+    this.radius = radius;
+    height = hChars.toInt();
+    width = vChars.toInt();
+  }
+
+  void objTomatrix(MatrixBase base, int posX, int posY) {
+    for (int j = 0; j <= width - 1; j++) {
       double y = j + 0.5;
-      for (int i = 0; i <= hChars - 1; i++) {
+      for (int i = 0; i <= height - 1; i++) {
         double x = (i + 0.5) * hUnitsPerChar;
         dist = sqrt((x - center) * (x - center) + (y - center) * (y - center));
 
         if (dist > radius - lineWidth_2 && dist < radius + lineWidth_2) {
-          stdout.write('*');
+          base.put(j + posX, i + posY, carac);
         } else {
-          stdout.write(' ');
+          base.put(j + posX, i + posY, ' ');
         }
       }
-
-      print('');
     }
   }
 }

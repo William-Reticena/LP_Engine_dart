@@ -25,11 +25,15 @@ void main(List<String> arguments) {
 
   PongCourt base = PongCourt();
   MatrixBase court = base.create();
-  // Square quadrado = Square();
+  Square quadrado = Square();
+  Triangle triangulo = Triangle();
 
-  Circle().create(4, 1, 1);
+  Circle circulo = Circle();
+
+  // Circle().create(3, 1, 1, '.');
 
   // base.addBall(quadrado);
+  base.addBall(triangulo);
 
   // //teste1[7][5] = '5';
   // //teste.adicionar(7, 5, '5');
@@ -50,16 +54,16 @@ void main(List<String> arguments) {
   // base.show();
   // // print(teste1[3][5]);
   // //
-  Square teste = Square();
-  teste.create(5, 5, '#');
-  teste.objTomatrix(court, 10, 10);
-  //court.show();
-  Square teste_2 = Square();
-  teste_2.create(5, 5, '#');
-  teste_2.objTomatrix(court, 15, 15);
+  // Square teste = Square();
+  // teste.create(5, 5, '#');
+  // teste.objTomatrix(court, 10, 10);
+  // //court.show();
+  // Square teste_2 = Square();
+  // teste_2.create(5, 5, '#');
+  // teste_2.objTomatrix(court, 15, 15);
 
-  Colision cod = Colision();
-  cod.checkSquare(teste, court);
+  // Colision cod = Colision();
+  // cod.checkSquare(teste, court);
   /*Moviment move = Moviment();
   move.movimentSquare(teste, court, 2, 0);*/
   //court.show();
