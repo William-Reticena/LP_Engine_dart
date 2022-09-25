@@ -5,7 +5,7 @@ class MatrixBase {
   late List<List<String>> _matrix;
   late int _width;
   late int _height;
-
+  
   MatrixBase(this._width, this._height) {
     _matrix = [];
 
@@ -18,14 +18,26 @@ class MatrixBase {
     _matrix[x][y] = val;
   }
 
+  String next(int x, int y, int lado){
+    if(lado == 1){ //topo
+      return _matrix[x + 1][y];
+    } else if(lado == 2){ //direita
+      return _matrix[x][y + 1];
+    } else if(lado == 3){
+      return _matrix[x - 1][y];
+    } else { //esquerda
+      return _matrix[x][y - 1];
+    }
+  }
+
   @override
   String toString() {
     return json.encode(_matrix);
   }
   
   void show() {
-    for (int i = 0; i < _height-1; i++) {
-      for (int j = 0; j < _width-1; j++) {
+    for (int i = 0; i < _height; i++) {
+      for (int j = 0; j < _width ; j++) {
         stdout.write(_matrix[i][j]);
       }
       print('');

@@ -52,9 +52,9 @@ class PongCourt {
           _matrix.put(i, j, '=');
         } else if (j == 0) {
           _matrix.put(i, j, '|');
-        } else if (i == _height - 2) {
+        } else if (i == _height - 1) {
           _matrix.put(i, j, '=');
-        } else if (j == _width - 2) {
+        } else if (j == _width - 1) {
           // stdout.write('object');
           _matrix.put(i, j, '|');
         }
@@ -64,7 +64,7 @@ class PongCourt {
   }
 
   void addBall(Square square) {
-    square.create(10, 10, '*');
+    square.create(1, 1, '*');
     int middleX = (_width / 2 - square.height / 2).ceil();
     int middleY = (_height / 2 - square.width / 2).ceil();
 
