@@ -34,7 +34,7 @@ class PongCourt {
 
   void addBall(var object) {
     if (object is Square) {
-      object.create(10, 10, '*');
+      object.create(10, 10, '*', 1, 1);
       int middleX = (_width / 2 - object.height / 2).ceil();
       int middleY = (_height / 2 - object.width / 2).ceil();
 

@@ -33,12 +33,18 @@ void main(List<String> arguments) {
   // base.addBall(quadrado);
   //base.addBall(triangulo);
   Moviment move = Moviment();
-  Circle cir = Circle();
-  cir.create(2, 2, 2, '*');
+  /*Circle cir = Circle();
+  Triangle tri = Triangle();
+  tri.create(4, 'A');
+  tri.objTomatrix(court, 5, 5);
+  court.show();
+  move.movimentTriangle(tri, court, 3, 3);
+  court.show();*/
+  /*cir.create(2, 2, 2, '*');
   cir.objTomatrix(court, 5, 5);
   court.show();
   move.movimentCirlce(cir, court, 2, 2);
-  court.show();
+  court.show();*/
   // //teste1[7][5] = '5';
   // //teste.adicionar(7, 5, '5');
   // //MatrixBase aux = MatrixBase(10, 10);
@@ -58,11 +64,16 @@ void main(List<String> arguments) {
   // base.show();
   // // print(teste1[3][5]);
   // //
-  /*Square teste = Square();
-  teste.create(5, 5, '#');
-  teste.objTomatrix(court, 10, 10);
+  Square teste = Square();
+  teste.create(5, 5, '#', 1, 1);
+  teste.objTomatrix(court, 1, 1);
   court.show();
-  Square teste_2 = Square();
+  Colision colid = Colision();
+  //colid.colidFour(teste, court);
+  colid.altMoviment(teste, court);
+  court.show();
+  //colid.checkSquare(teste, court);
+  /*Square teste_2 = Square();
   teste_2.create(5, 5, '#');
   teste_2.objTomatrix(court, 10, 15);
   court.show();

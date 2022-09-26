@@ -102,6 +102,7 @@ class Moviment{
         //base.show();
       }
     }
+
     }
      if(origemY == finalY){
       while(origemX != finalX){
@@ -117,7 +118,7 @@ class Moviment{
       }
     }
     }
-  }
+}
 
   void movimentCirlce(Circle obj, MatrixBase base, int x, int y){
     int origemX = obj.posX;

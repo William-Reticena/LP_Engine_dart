@@ -6,12 +6,16 @@ class Square{
   late int width;
   late int posX;
   late int posY;
+  late int movX;
+  late int movY;
   late String carac;
 
-  void create(int width, int height, String simbol){
+  void create(int width, int height, String simbol, int mX, int mY){
     this.height = height;
     this.width = width;
     carac = simbol;
+    movX = mX;
+    movY = mY;
     /*for(int i = 0; i < height; i++){
       for(int j = 0; j < width; j++){
         stdout.write(simbol);

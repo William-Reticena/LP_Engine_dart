@@ -17,6 +17,8 @@ class Triangle {
   void objTomatrix(MatrixBase base, int x, int y) {
     int c = height - 1;
     int d = height + 1;
+    posX = x;
+    posY = y;
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
         if (j < c || j > d - 2) {
@@ -33,10 +35,20 @@ class Triangle {
   }
 
   void objDelete(MatrixBase base) {
-    for (int i = 0; i < width; i++) {
-      for (int j = 0; j < height; j++) {
-        base.put(j + posX, i + posY, ' ');
+    int c = height - 1;
+    int d = height + 1;
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        if (j < c || j > d - 2) {
+          base.put(i + posX, j + posY, ' ');
+        } else {
+          base.put(i + posX, j + posY, ' ');
+        }
       }
+
+      print(' ');
+      c--;
+      d++;
     }
   }
 }
