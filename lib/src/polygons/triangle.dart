@@ -8,10 +8,14 @@ class Triangle {
   late int posX;
   late int posY;
   late String carac;
-  void create(int alt, String simbol) {
+  late int movX;
+  late int movY;
+  void create(int alt, String simbol, int mX, int mY) {
     height = alt;
     carac = simbol;
     width = 2 * alt - 1;
+    movX = mX;
+    movY = mY;
   }
 
   void objTomatrix(MatrixBase base, int x, int y) {

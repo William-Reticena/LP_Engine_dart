@@ -14,8 +14,10 @@ class Circle {
   late int radius;
   late double lineWidth_2;
   late MatrixBase circ;
+  late int movX;
+  late int movY;
 
-  void create(int radius, int lineWidth, double xScale, String carac) {
+  void create(int radius, int lineWidth, double xScale, String carac, int mX, int mY) {
     hUnitsPerChar = 1 / xScale;
     double hChars = (2 * radius + lineWidth) / hUnitsPerChar;
     double vChars = (2 * radius + lineWidth).toDouble();
@@ -25,6 +27,8 @@ class Circle {
     this.radius = radius;
     height = hChars.toInt();
     width = vChars.toInt();
+    movX = mX;
+    movY = mY;
   }
 
   void objTomatrix(MatrixBase base, int X, int Y) {

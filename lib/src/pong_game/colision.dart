@@ -120,38 +120,84 @@ class Colision{
     return 0;
   }
 
-  void altMoviment(Square obj, MatrixBase base){
+  void altMovimentSquare(Square obj, MatrixBase base){
     Moviment move = Moviment();
     if(checkSquare(obj, base) == 1 && obj.movY == 1){ //colidiu em cima, mando para baixo
       move.movimentSquare(obj, base, obj.movY, 0);
-      print("teste1");
     } else if(checkSquare(obj, base) == 2 && obj.movX == 1){ //colidiu na direita, mando para a esquerda
       move.movimentSquare(obj, base, obj.movX, 0);
-      print("teste2");
     } else if(checkSquare(obj, base) == 3 && obj.movY == 1){ // colidiu em baixo, mando para cima
       move.movimentSquare(obj, base, 0, -obj.movY);
-      print("teste3");
     } else if(checkSquare(obj, base) == 4 && obj.movX == 1){ //colidiu na direita, mando para a esquerda
       move.movimentSquare(obj, base, -obj.movX, 0);
-      print("teste4");
     }
   }
 
-  void colidFour(Square obj, MatrixBase base){
+  void colidFourSquare(Square obj, MatrixBase base){
     //verifica cada lateral se ouve colisao, caso houve, não faço nada
     Moviment move = Moviment();
     if(checkSquare(obj, base) == 1){
       move.movimentSquare(obj, base, 0, 0);
-      print("teste1");
     } else if(checkSquare(obj, base) == 2){
       move.movimentSquare(obj, base, 0, 0);
-      print("teste2");
     } else if(checkSquare(obj, base) == 3){
       move.movimentSquare(obj, base, 0, 0);
-      print("teste3");
     } else if(checkSquare(obj, base) == 4){
       move.movimentSquare(obj, base, 0, 0);
-      print("teste4");
+    }
+  }
+
+  void altMovimentCircle(Circle obj, MatrixBase base){
+    Moviment move = Moviment();
+    if(checkCircle(obj, base) == 1 && obj.movY == 1){ //colidiu em cima, mando para baixo
+      move.movimentCirlce(obj, base, obj.movY, 0);
+    } else if(checkCircle(obj, base) == 2 && obj.movX == 1){ //colidiu na direita, mando para a esquerda
+      move.movimentCirlce(obj, base, obj.movX, 0);
+    } else if(checkCircle(obj, base) == 3 && obj.movY == 1){ // colidiu em baixo, mando para cima
+      move.movimentCirlce(obj, base, 0, -obj.movY);
+    } else if(checkCircle(obj, base) == 4 && obj.movX == 1){ //colidiu na direita, mando para a esquerda
+      move.movimentCirlce(obj, base, -obj.movX, 0);
+    }
+  }
+
+  void colidFourCircle(Circle obj, MatrixBase base){
+    //verifica cada lateral se ouve colisao, caso houve, não faço nada
+    Moviment move = Moviment();
+    if(checkCircle(obj, base) == 1){
+      move.movimentCirlce(obj, base, 0, 0);
+    } else if(checkCircle(obj, base) == 2){
+      move.movimentCirlce(obj, base, 0, 0);
+    } else if(checkCircle(obj, base) == 3){
+      move.movimentCirlce(obj, base, 0, 0);
+    } else if(checkCircle(obj, base) == 4){
+      move.movimentCirlce(obj, base, 0, 0);
+    }
+  }
+
+  void altMovimentTriangle(Triangle obj, MatrixBase base){
+    Moviment move = Moviment();
+    if(checkTriangle(obj, base) == 1 && obj.movY == 1){ //colidiu em cima, mando para baixo
+      move.movimentTriangle(obj, base, obj.movY, 0);
+    } else if(checkTriangle(obj, base) == 2 && obj.movX == 1){ //colidiu na direita, mando para a esquerda
+      move.movimentTriangle(obj, base, obj.movX, 0);
+    } else if(checkTriangle(obj, base) == 3 && obj.movY == 1){ // colidiu em baixo, mando para cima
+      move.movimentTriangle(obj, base, 0, -obj.movY);
+    } else if(checkTriangle(obj, base) == 4 && obj.movX == 1){ //colidiu na direita, mando para a esquerda
+      move.movimentTriangle(obj, base, -obj.movX, 0);
+    }
+  }
+
+  void colidFourTriangle(Triangle obj, MatrixBase base){
+    //verifica cada lateral se ouve colisao, caso houve, não faço nada
+    Moviment move = Moviment();
+    if(checkTriangle(obj, base) == 1){
+      move.movimentTriangle(obj, base, 0, 0);
+    } else if(checkTriangle(obj, base) == 2){
+      move.movimentTriangle(obj, base, 0, 0);
+    } else if(checkTriangle(obj, base) == 3){
+      move.movimentTriangle(obj, base, 0, 0);
+    } else if(checkTriangle(obj, base) == 4){
+      move.movimentTriangle(obj, base, 0, 0);
     }
   }
 }

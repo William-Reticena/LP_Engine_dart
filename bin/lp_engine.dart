@@ -70,7 +70,7 @@ void main(List<String> arguments) {
   court.show();
   Colision colid = Colision();
   //colid.colidFour(teste, court);
-  colid.altMoviment(teste, court);
+  //colid.altMoviment(teste, court);
   court.show();
   //colid.checkSquare(teste, court);
   /*Square teste_2 = Square();
