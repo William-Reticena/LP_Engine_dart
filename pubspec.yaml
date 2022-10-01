@@ -14,3 +14,4 @@ dev_dependencies:
   test: ^1.16.0
 dependencies:
   chalkdart: ^2.0.8
+  dart_console: ^1.1.2
