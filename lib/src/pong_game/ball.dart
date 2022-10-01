@@ -12,7 +12,14 @@ class Ball extends Circle {
   final int _height = stdout.terminalLines;
 
   void init(MatrixBase base) {
-    int direction = (Random().nextInt(1)) as bool ? -1 : 1;
+    int randomNumber = Random().nextInt(2);
+    int? direction;
+
+    if (randomNumber == 1) {
+      direction = -1;
+    } else {
+      direction = 1;
+    }
 
     print(direction);
 

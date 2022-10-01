@@ -12,5 +12,5 @@ void main(List<String> arguments) {
   MatrixBase court = base.create();
   Ball ball = Ball();
   ball.init(court);
-  court.show();
+  // court.show();
 }
