@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:lp_engine/lp_engine.dart';
 import 'package:lp_engine/src/polygons/circle.dart';
 import 'package:lp_engine/src/polygons/triangle.dart';
@@ -8,9 +10,8 @@ class PongCourt {
   final int _width, _height;
 
   PongCourt()
-      : _width = 69, //stdout.terminalColumns,
-        _height = 24 {
-    //stdout.terminalLines
+      : _width = stdout.terminalColumns,
+        _height = stdout.terminalLines {
     MatrixBase court = MatrixBase(_width, _height);
     _matrix = court;
   }
@@ -42,7 +43,6 @@ class PongCourt {
 
       _matrix.show();
     } else if (object is Circle) {
-      object.create(2, 1, 2, '.');
       int middleX = (_width / 2 - object.height / 2).ceil();
       int middleY = (_height / 2 - object.width / 2).ceil();
 
@@ -51,7 +51,6 @@ class PongCourt {
       _matrix.show();
     } else if (object is Triangle) {
       int alt = 4;
-      object.create(alt, '#');
       int middleX = (_width / 2 - object.height / 2).ceil();
       int middleY = (_height / 2 - object.width / 2).ceil();
 
