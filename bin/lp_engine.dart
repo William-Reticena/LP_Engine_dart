@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:async';
 import 'package:lp_engine/lp_engine.dart';
 import 'package:lp_engine/src/polygons/circle.dart';
 import 'package:lp_engine/src/polygons/triangle.dart';
@@ -7,11 +8,15 @@ import 'package:lp_engine/src/pong_game/moviment.dart';
 import 'package:lp_engine/src/utils/matrix_base.dart';
 import 'package:lp_engine/src/pong_game/colision.dart';
 
+List<int> keyCodes = [];
+void toBePrinted(List<int> _keyCodes) {
+  keyCodes = _keyCodes;
+}
 
-void main(List<String> arguments) {
+void main(List<String> arguments) async {
   //variaveis auxiliares para determinar a posição dos objetos
-  //int aux1 = stdout.terminalColumns; 154
-  //int aux2 = stdout.terminalLines; 37
+  int aux1 = stdout.terminalColumns; //154
+  int aux2 = stdout.terminalLines; //37
   
   //-----------------------------------------------------------//
   //criação das base para a construção do jogo
@@ -25,11 +30,11 @@ void main(List<String> arguments) {
   //objeto 1
   Square box1 = Square();
   box1.create(6, 4, "#", 1, 0);
-  box1.objTomatrix(court, (37 ~/ 2) - 3, 1);
+  box1.objTomatrix(court, ((aux2 ~/ 2) - (box1.width ~/ 2)) , 1);
   //objeto 2
   Square box2 = Square();
   box2.create(6, 4, "#", 1, 0);
-  box2.objTomatrix(court,  (37 ~/ 2) - 3, 154 - 5);
+  box2.objTomatrix(court,  (aux2 ~/ 2) - (box1.width ~/ 2), aux1 - 5);
   //-----------------------------------------------------------//
   //inicialização das classes para realizar as operações
   Moviment move = Moviment();
@@ -41,90 +46,107 @@ void main(List<String> arguments) {
 
   int player2_X = 0;
   int player2_Y = 0;
-  int i = 0;
+
+  int placar1 = 0;
+  int placar2 = 0;
+  //sempre resetar o valor dos incrementos apos um movimento
+
+  stdin.echoMode = false;
+  stdin.lineMode = false;
+  stdin.listen(toBePrinted);
+
   //aqui dentro vai a logica para movimentação
   while(true){
+    keyCodes.forEach((keyCode) {
+      if(keyCode == 119){
+        //print(String.fromCharCode(keyCode)); 
+        player1_X = -1; // para cima
+        //print(player1_X);
+      } else if(keyCode == 115){
+        //print(String.fromCharCode(keyCode));
+        player1_X = 1; // para baixo
+        //print(player1_X);
+      }else if(keyCode == 105){
+        //print(String.fromCharCode(keyCode));
+        player2_X = -1; // para cima
+        //print(player2_X);
+      }else if(keyCode == 107){
+        //print(String.fromCharCode(keyCode));
+        player2_X = 1; // para baixo
+        //print(player2_X);
+      }
+    });
+    keyCodes = [];
+    await Future.delayed(Duration(milliseconds: 100));
+  
     //verificação do primeiro player
-    print("teste1");
-    /*move.moviment(box1, court, i, player1_Y);
-    move.moviment(box2, court, 0 - i, player2_Y);*/
     if(!colid.check(box1, court)){
-      print("teste2");
-      /*if(box1.movX == 0){
+      if(box1.movX == 0){
         player1_X = 0;
       } else {
         player1_Y = 0;
-      }*/
-      move.moviment(box1, court, 0 - i, player1_Y);
+      }
+      move.moviment(box1, court, player1_X, player1_Y);
+    } else if(colid.check2(box1, court) == 1){ //colidi em cima
+      if(player1_X == 1){
+        move.moviment(box1, court, player1_X, player1_Y);
+      }
+    } else if(colid.check2(box1, court) == 3){ //colidi em baixo
+      if(player1_X == -1){
+        move.moviment(box1, court, player1_X, player1_Y);
+      }
     }
     //verificação do segundo player
-    /*if(!colid.check(box2, court)){
-      print("teste3");
-      /*if(box1.movX == 0){
+    if(!colid.check(box2, court)){
+      if(box1.movX == 0){
         player2_X = 0;
       } else {
         player2_Y = 0;
-      }*/
-      move.moviment(box2, court, i, player2_Y);
-    }*/
-
+      }
+      move.moviment(box2, court, player2_X, player2_Y);
+    } else if(colid.check2(box2, court) == 1){ //colidi em cima
+      if(player2_X == 1){
+        move.moviment(box2, court, player2_X, player2_Y);
+      }
+    } else if(colid.check2(box2, court) == 3){ //colidi em baixo
+      if(player2_X == -1){
+        move.moviment(box2, court, player2_X, player2_Y);
+      }
+    }
+    print(ball.movX);
+    print(ball.movY);
     //Aqui fica a verificação da bola
-    i++;
+    if(!colid.check(ball, court)){ //verifica se bateu e movimenta caso não
+      move.moviment(ball, court, ball.movX, ball.movY);
+    } else if(colid.check2(ball, court) == 2){ //colidiu com a direita
+      if('|' == court.next(ball.posX, ball.posY + ball.height - 1, 2) && '|' == court.next(ball.posX + ball.width, ball.posY + ball.height - 1, 2)){
+        placar1++;
+        ball.objDelete(court);
+        ball.objTomatrix(court, ball.middleX ,ball.middleY);
+      } else { //só inverto
+        ball.movX * -1;
+        ball.movY * -1;
+      }
+    } else if(colid.check2(ball, court) == 4){ //colidiu com a direita
+      if('|' == court.next(ball.posX, ball.posY, 4) && '|' == court.next(ball.posX + ball.width, ball.posY, 4)){
+        placar2++;
+        ball.objDelete(court);
+        ball.objTomatrix(court, ball.middleX ,ball.middleY);
+      } else { //só inverto
+        ball.movX * -1;
+        ball.movY * -1;
+      }
+    } else if(colid.check2(ball, court) == 1){ //colidiu em cima
+      ball.movX = 1;
+      move.moviment(ball, court, ball.movX, ball.movY);
+    } else if(colid.check2(ball, court) == 3){ //colidiu em baixo
+      ball.movX = -1;
+      move.moviment(ball, court, ball.movX, ball.movY);
+    }
+
+    //zera as variaveis para a proxima iteração
+    
+    player1_X = player2_X = 0;
     court.show();
   }
 }
-
-/*import 'dart:async';
-import 'dart:io';
-
-import 'package:dart_console/dart_console.dart';
-
-final console = Console();
-
-Future<void> read() async {
-  var key = console.readKey();
-  if(key == 's'){
-    a++;
-  }
-  print(key);
-}
-
-int a = 0;
-
-void main() async {
-  Timer.periodic(Duration(milliseconds: 10), (Timer t) async {
-    t.cancel();
-    await read();
-  });
-
-  Timer.periodic(Duration(milliseconds: 10), (Timer t) {
-    print(a);
-  });
-}*/
-
-/*import 'dart:io';
-
-import 'package:dart_console/dart_console.dart';
-
-final console = Console();
-
-void main() {
-  console.writeLine(
-      'This sample demonstrates keyboard input. Press any key including control keys');
-  console.writeLine(
-      'such as arrow keys, page up/down, home, end etc. to see it echoed to the');
-  console.writeLine('screen. Press Ctrl+Q to end the sample.');
-  var key = console.readKey();
-
-  while (true) {
-    if (key.isControl && key.controlChar == ControlCharacter.ctrlQ) {
-      console.clearScreen();
-      console.resetCursorPosition();
-      console.rawMode = false;
-      exit(0);
-    } else {
-      print(key);
-    }
-    key = console.readKey();
-  }
-}*/
