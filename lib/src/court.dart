@@ -10,8 +10,8 @@ class PongCourt {
   final int _width, _height;
 
   PongCourt()
-      : _width = stdout.terminalColumns,
-        _height = stdout.terminalLines {
+      : _width =  154,//stdout.terminalColumns,
+        _height = 37/*stdout.terminalLines*/ {
     MatrixBase court = MatrixBase(_width, _height);
     _matrix = court;
   }

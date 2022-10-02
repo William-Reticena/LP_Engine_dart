@@ -20,13 +20,13 @@ class MatrixBase {
 
   String next(int x, int y, int lado){
     if(lado == 1){ //topo
-      return _matrix[x][y - 1];
-    } else if(lado == 2){ //direita
-      return _matrix[x + 1][y];
-    } else if(lado == 3){ //baixo
-      return _matrix[x][y + 1];
-    } else { //esquerda
       return _matrix[x - 1][y];
+    } else if(lado == 2){ //direita
+      return _matrix[x][y + 1];
+    } else if(lado == 3){ //baixo
+      return _matrix[x + 1][y];
+    } else { //esquerda
+      return _matrix[x][y - 1];
     }
   }
 

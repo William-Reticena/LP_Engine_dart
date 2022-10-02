@@ -29,8 +29,8 @@ class Square{
   }
 
   void objDelete(MatrixBase base){
-    for(int i = 0; i < width; i++){
-      for(int j = 0; j < height; j++){
+    for(int i = 0; i < height; i++){
+      for(int j = 0; j < width; j++){
         base.put(j + posX, i + posY, ' ');
       }
     }

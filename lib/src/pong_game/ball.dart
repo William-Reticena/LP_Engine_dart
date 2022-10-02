@@ -8,8 +8,8 @@ class Ball extends Circle {
   final int _radius = 2;
   late final int _x;
   late final int _y;
-  final int _width = stdout.terminalColumns;
-  final int _height = stdout.terminalLines;
+  final int _width = 154;//stdout.terminalColumns;
+  final int _height = 37;//stdout.terminalLines;
 
   void init(MatrixBase base) {
     int randomNumber = Random().nextInt(2);
