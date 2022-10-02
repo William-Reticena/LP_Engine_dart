@@ -7,6 +7,7 @@ final console = Console();
 
 Future<void> read() async {
   var key = console.readKey();
+
   print(key);
 }
 
