@@ -24,8 +24,14 @@ void main(List<String> arguments) async {
   MatrixBase court = base.create();
   //-----------------------------------------------------------//
   //criação da bola e posicionamento no centro
-  Ball ball = Ball();
-  ball.init(court);
+  /*Ball ball = Ball();
+  ball.init(court);*/
+  Circle bola = Circle();
+  bola.create(2, 2, 2, '*', 1, 1);
+  int middleX = aux2 ~/ 2 - bola.width ~/ 2;
+  int middleY = aux1 ~/ 2 - bola.height ~/ 2;
+  
+  bola.objTomatrix(court, middleX, middleY);
   //-----------------------------------------------------------//
   //objeto 1
   Square box1 = Square();
@@ -54,6 +60,7 @@ void main(List<String> arguments) async {
   stdin.echoMode = false;
   stdin.lineMode = false;
   stdin.listen(toBePrinted);
+  int muda = -1;
 
   //aqui dentro vai a logica para movimentação
   while(true){
@@ -104,8 +111,8 @@ void main(List<String> arguments) async {
         player2_Y = 0;
       }
       move.moviment(box2, court, player2_X, player2_Y);
-    } else if(colid.check2(box2, court) == 1){ //colidi em cima
-      if(player2_X == 1){
+    } else if(colid.check2(box2, court) == 1){ //colidi em cima // ele entra aqui e espera o cara digitar algo diferente
+      if(player2_X == 1){ //se digitou algo para baixo ele executa, caso contrario não
         move.moviment(box2, court, player2_X, player2_Y);
       }
     } else if(colid.check2(box2, court) == 3){ //colidi em baixo
@@ -113,37 +120,65 @@ void main(List<String> arguments) async {
         move.moviment(box2, court, player2_X, player2_Y);
       }
     }
-    print(ball.movX);
-    print(ball.movY);
-    //Aqui fica a verificação da bola
-    if(!colid.check(ball, court)){ //verifica se bateu e movimenta caso não
-      move.moviment(ball, court, ball.movX, ball.movY);
-    } else if(colid.check2(ball, court) == 2){ //colidiu com a direita
-      if('|' == court.next(ball.posX, ball.posY + ball.height - 1, 2) && '|' == court.next(ball.posX + ball.width, ball.posY + ball.height - 1, 2)){
-        placar1++;
-        ball.objDelete(court);
-        ball.objTomatrix(court, ball.middleX ,ball.middleY);
-      } else { //só inverto
-        ball.movX * -1;
-        ball.movY * -1;
-      }
-    } else if(colid.check2(ball, court) == 4){ //colidiu com a direita
-      if('|' == court.next(ball.posX, ball.posY, 4) && '|' == court.next(ball.posX + ball.width, ball.posY, 4)){
-        placar2++;
-        ball.objDelete(court);
-        ball.objTomatrix(court, ball.middleX ,ball.middleY);
-      } else { //só inverto
-        ball.movX * -1;
-        ball.movY * -1;
-      }
-    } else if(colid.check2(ball, court) == 1){ //colidiu em cima
-      ball.movX = 1;
-      move.moviment(ball, court, ball.movX, ball.movY);
-    } else if(colid.check2(ball, court) == 3){ //colidiu em baixo
-      ball.movX = -1;
-      move.moviment(ball, court, ball.movX, ball.movY);
-    }
 
+    print("movX");
+    print(bola.movX);
+    print("movY");
+    print(bola.movY);
+    print("realX");
+    print(bola.realX);
+    print("realY");
+    print(bola.realY);
+
+    //Aqui fica a verificação da bola
+    if(!colid.check(bola, court)){ //verifica se bateu e movimenta caso não
+      move.moviment(bola, court, bola.realX, bola.realY); //não colidi em nada, movimento
+    } else if(colid.check2(bola, court) == 1){ //colidi em cima
+      print("colidi em cima");
+      bola.realX = 1;
+      move.moviment(bola, court, bola.realX, bola.realY);
+    } else if(colid.check2(bola, court) == 3){ //colidi em baixo
+      print("colidi em baixo");
+      bola.realX = -1;
+      move.moviment(bola, court, bola.realX, bola.realY);
+    } else if(colid.check2(bola, court) == 2){ //verifico se colidiu com a direita
+      if('|' == court.next(bola.posX, bola.posY + bola.height - 1, 2) && '|' == court.next(bola.posX + bola.width, bola.posY + bola.height - 1, 2)){ //verifico se foi na lateral e não na raquete
+        placar1++;
+        bola.objDelete(court);
+        bola.objTomatrix(court, middleX ,middleY);
+      } else { //só inverto
+        bola.realX *= -1;
+        bola.realY *= -1;
+        move.moviment(bola, court, bola.realX, bola.realY);
+      }
+    } else if(colid.check2(bola, court) == 4){ //colidiu com a direita
+      if('|' == court.next(bola.posX, bola.posY, 4) && '|' == court.next(bola.posX + bola.width, bola.posY, 4)){
+        placar2++;
+        bola.objDelete(court);
+        bola.objTomatrix(court, middleX ,middleY);
+      } else { //só inverto
+        bola.realX *= -1;
+        bola.realY *= -1;
+        move.moviment(bola, court, bola.realX, bola.realY);
+      }
+    } 
+    
+    
+    
+    
+    /*if(colid.check2(bola, court) == 1){
+      print("entrou");
+      bola.movX = 1;
+      muda = 1;
+        bola.movX = 1;
+        print("entrou 2");
+        move.moviment(bola, court, muda, bola.movY);
+      
+    } else if(colid.check2(bola, court) == 3){
+      muda = -1;
+        move.moviment(bola, court, muda, bola.movY);
+    }*/
+    
     //zera as variaveis para a proxima iteração
     
     player1_X = player2_X = 0;

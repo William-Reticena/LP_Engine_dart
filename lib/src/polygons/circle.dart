@@ -14,8 +14,10 @@ class Circle {
   late int radius;
   late double lineWidth_2;
   late MatrixBase circ;
-  late int movX;
-  late int movY;
+  late int movX; //essa flag indica se o objeto pode se mover
+  late int movY; //essa flag indica se o objeto pode se mover
+  late int realX; //essa flag indica o movimento
+  late int realY; //essa flag indica o movimento
 
   void create(int radius, int lineWidth, double xScale, String carac, int mX, int mY) {
     hUnitsPerChar = 1 / xScale;
@@ -29,6 +31,7 @@ class Circle {
     width = vChars.toInt();
     movX = mX;
     movY = mY;
+    randonDirection();
   }
 
   void objTomatrix(MatrixBase base, int X, int Y) {
@@ -62,6 +65,23 @@ class Circle {
           base.put(j + posX, i + posY, ' ');
         }
       }
+    }
+  }
+
+  void randonDirection(){
+      int randomNumberX = Random().nextInt(2);
+      int randomNumberY = Random().nextInt(3);
+      if (randomNumberX == 1) {
+      realX = -1;
+      } else {
+      realX = 1;
+      }
+      if (randomNumberY == 1) {
+      realY = 1;
+      } else if(randomNumberY == 1) {
+      realY = 0;
+      } else {
+      realY = -1;
     }
   }
 }
