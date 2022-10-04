@@ -1,7 +1,6 @@
 import 'package:lp_engine/src/polygons/triangle.dart';
 import 'package:lp_engine/src/polygons/square.dart';
 import 'package:lp_engine/src/polygons/circle.dart';
-import 'package:lp_engine/src/pong_game/moviment.dart';
 import 'package:lp_engine/src/utils/matrix_base.dart';
 
 class Colision{
@@ -29,16 +28,10 @@ class Colision{
     }
     if(obj.movX == 1 && obj.movY == 0){ //só posso mover para cima e para baixo
       if(' ' != base.next(obj.posX, obj.posY, 1)){ //colidiu em cima na primeira quina
-        print('bateu aqui');
-        int i = 0;
-        print(base.next(obj.posX, obj.posY, 1));
-        int j = 0;
         return true; //1
       } else if(' ' != base.next(obj.posX, obj.posY, 1)){ //colidiu em cima na segunda quina
-        print('bateu aqui 2');
         return true; //1
       } else if(' ' != base.next(obj.posX + obj.width, obj.posY, 3)){ //colidiu em baixo na primeira quina
-      print('bateu aqui 2');
         return true; //3
       } else if(' ' != base.next(obj.posX + obj.width, obj.posY + obj.height - 1, 3)){ //colidiu em baixo na segunda quina
        return true; //3
@@ -63,20 +56,16 @@ class Colision{
   bool _checkCircle(Circle obj, MatrixBase base){
       if(obj.movX == 1 && obj.movY == 1){ //pode se mover nas quartro direçoes
       if(' ' != base.next(obj.posX, obj.posY, 1)){ //colidiu em cima na primeira quina
-      print('bateu aqui em cima');
         return true; //1
       } else if(' ' != base.next(obj.posX, obj.posY, 1)){ //colidiu em cima na segunda quina
-      print('bateu aqui cima');
         return true; //1
       } else if(' ' != base.next(obj.posX, obj.posY + obj.height - 1, 2)){ //colidiu na direita na primeira quina
        return true; //2
       } else if(' ' != base.next(obj.posX + obj.width, obj.posY + obj.height - 1, 2)){ //colidiu na direita na segunda quina
         return true; //2
       } else if(' ' != base.next(obj.posX + obj.width, obj.posY, 3)){ //colidiu em baixo na primeira quina
-      print('bateu aqui baixo');
         return true; //3
       } else if(' ' != base.next(obj.posX + obj.width, obj.posY + obj.height - 1, 3)){ //colidiu em baixo na segunda quina
-        print('bateu aqui baixo');
         return true; //3
       } else if(' ' != base.next(obj.posX, obj.posY, 4)){ //colidiu na esqueda na primeira quina
         return true; //4
@@ -86,16 +75,12 @@ class Colision{
     }
     if(obj.movX == 1 && obj.movY == 0){ //só posso mover para cima e para baixo
       if(' ' != base.next(obj.posX, obj.posY, 1)){ //colidiu em cima na primeira quina
-        print("bateu aqui");
         return true; //1
       } else if(' ' != base.next(obj.posX, obj.posY, 1)){ //colidiu em cima na segunda quina
-      print("bateu aqui");
         return true; //1
       } else if(' ' != base.next(obj.posX + obj.width, obj.posY, 3)){ //colidiu em baixo na primeira quina
-      print("bateu aqui");
         return true; //3
       } else if(' ' != base.next(obj.posX + obj.width, obj.posY + obj.height - 1, 3)){ //colidiu em baixo na segunda quina
-       print("bateu aqui");
        return true; //3
       }
     }
@@ -197,16 +182,10 @@ int _checkSquare2(Square obj, MatrixBase base){
     }
     if(obj.movX == 1 && obj.movY == 0){ //só posso mover para cima e para baixo
       if(' ' != base.next(obj.posX, obj.posY, 1)){ //colidiu em cima na primeira quina
-        print('bateu aqui');
-        int i = 0;
-        print(base.next(obj.posX, obj.posY, 1));
-        int j = 0;
         return 1; 
       } else if(' ' != base.next(obj.posX, obj.posY, 1)){ //colidiu em cima na segunda quina
-        print('bateu aqui 2');
         return 1; 
       } else if(' ' != base.next(obj.posX + obj.width, obj.posY, 3)){ //colidiu em baixo na primeira quina
-      print('bateu aqui 2');
         return 3;
       } else if(' ' != base.next(obj.posX + obj.width, obj.posY + obj.height - 1, 3)){ //colidiu em baixo na segunda quina
        return 3; 
@@ -250,14 +229,10 @@ int _checkSquare2(Square obj, MatrixBase base){
     }
     if(obj.movX == 1 && obj.movY == 0){ //só posso mover para cima e para baixo
       if(' ' != base.next(obj.posX, obj.posY, 1)){ //colidiu em cima na primeira quina
-        print('bateu aqui');
-        print(base.next(obj.posX, obj.posY, 1));
         return 1; //1
       } else if(' ' != base.next(obj.posX, obj.posY, 1)){ //colidiu em cima na segunda quina
-        print('bateu aqui 2');
         return 1; //1
       } else if(' ' != base.next(obj.posX + obj.width, obj.posY, 3)){ //colidiu em baixo na primeira quina
-      print('bateu aqui 2');
         return 3; //3
       } else if(' ' != base.next(obj.posX + obj.width, obj.posY + obj.height - 1, 3)){ //colidiu em baixo na segunda quina
        return 3; //3

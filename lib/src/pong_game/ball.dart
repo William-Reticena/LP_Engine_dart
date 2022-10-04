@@ -12,46 +12,34 @@ class Ball extends Circle {
   final int _height = stdout.terminalLines;
   late int movX;
   late int movY;
-  late int dMovX;
-  late int dMovY;
   late int middleX = (_height / 2 - super.width / 2).ceil();
   late int middleY = (_width /2 - super.height / 2).ceil();
-  
-  void init(MatrixBase base) {
-    randonDirection();
+  late int realX; //essa flag indica o movimento
+  late int realY; //essa flag indica o movimento
 
+  void init(MatrixBase base, int mX, int mY) {
+    randonDirection();
+    movX = mX;
+    movY = mY;
     super.create(_radius, 2, 2, '*', movX, movY);
 
-    super.objTomatrix(base, middleX,
-        middleY);
+    super.objTomatrix(base, middleX, middleY);
     }
 
     void randonDirection(){
       int randomNumberX = Random().nextInt(2);
       int randomNumberY = Random().nextInt(3);
       if (randomNumberX == 1) {
-      movX = -1;
+      realX = -1;
       } else {
-      movX = 1;
+      realX = 1;
       }
       if (randomNumberY == 1) {
-      movY = 1;
+      realY = 1;
       } else if(randomNumberY == 1) {
-      movY = 0;
+      realY = 0;
       } else {
-      movY = -1;
-    }
-
-    //pode se movimentar ?
-    if(movY != 0){
-      dMovY = 1;
-    } else {
-      dMovY = 0;
-    }
-    if(movX == 1){
-      dMovX = 1;
-    } else {
-      dMovX = 0;
+      realY = -1;
     }
   }
 }

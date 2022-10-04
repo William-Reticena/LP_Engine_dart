@@ -31,7 +31,6 @@ class Circle {
     width = vChars.toInt();
     movX = mX;
     movY = mY;
-    randonDirection();
   }
 
   void objTomatrix(MatrixBase base, int X, int Y) {
@@ -65,23 +64,6 @@ class Circle {
           base.put(j + posX, i + posY, ' ');
         }
       }
-    }
-  }
-
-  void randonDirection(){
-      int randomNumberX = Random().nextInt(2);
-      int randomNumberY = Random().nextInt(3);
-      if (randomNumberX == 1) {
-      realX = -1;
-      } else {
-      realX = 1;
-      }
-      if (randomNumberY == 1) {
-      realY = 1;
-      } else if(randomNumberY == 1) {
-      realY = 0;
-      } else {
-      realY = -1;
     }
   }
 }
