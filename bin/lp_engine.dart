@@ -17,7 +17,7 @@ void main(List<String> arguments) async {
   //variaveis auxiliares para determinar a posição dos objetos
   int aux1 = stdout.terminalColumns; //154
   int aux2 = stdout.terminalLines; //37
-  
+
   //-----------------------------------------------------------//
   //criação das base para a construção do jogo
   PongCourt base = PongCourt();
@@ -39,11 +39,11 @@ void main(List<String> arguments) async {
   //objeto 1
   Square box1 = Square();
   box1.create(6, 4, "#", 1, 0);
-  box1.objTomatrix(court, ((aux2 ~/ 2) - (box1.width ~/ 2)) , 1);
+  box1.objTomatrix(court, ((aux2 ~/ 2) - (box1.width ~/ 2)), 1);
   //objeto 2
   Square box2 = Square();
   box2.create(6, 4, "#", 1, 0);
-  box2.objTomatrix(court,  (aux2 ~/ 2) - (box1.width ~/ 2), aux1 - 5);
+  box2.objTomatrix(court, (aux2 ~/ 2) - (box1.width ~/ 2), aux1 - 5);
   //-----------------------------------------------------------//
   //inicialização das classes para realizar as operações
   Moviment move = Moviment();
@@ -65,21 +65,21 @@ void main(List<String> arguments) async {
   stdin.listen(toBePrinted);
 
   //aqui dentro vai a logica para movimentação
-  while(true){
+  while (true) {
     keyCodes.forEach((keyCode) {
-      if(keyCode == 119){
-        //print(String.fromCharCode(keyCode)); 
+      if (keyCode == 119) {
+        //print(String.fromCharCode(keyCode));
         player1_X = -1; // para cima
         //print(player1_X);
-      } else if(keyCode == 115){
+      } else if (keyCode == 115) {
         //print(String.fromCharCode(keyCode));
         player1_X = 1; // para baixo
         //print(player1_X);
-      }else if(keyCode == 105){
+      } else if (keyCode == 105) {
         //print(String.fromCharCode(keyCode));
         player2_X = -1; // para cima
         //print(player2_X);
-      }else if(keyCode == 107){
+      } else if (keyCode == 107) {
         //print(String.fromCharCode(keyCode));
         player2_X = 1; // para baixo
         //print(player2_X);
@@ -90,36 +90,41 @@ void main(List<String> arguments) async {
     print("player 1: $placar1 player 2: $placar2");
     
     //verificação do primeiro player
-    if(!colid.check(box1, court)){
-      if(box1.movX == 0){
+    if (!colid.check(box1, court)) {
+      if (box1.movX == 0) {
         player1_X = 0;
       } else {
         player1_Y = 0;
       }
       move.moviment(box1, court, player1_X, player1_Y);
-    } else if(colid.check2(box1, court) == 1){ //colidi em cima
-      if(player1_X == 1){
+    } else if (colid.check2(box1, court) == 1) {
+      //colidi em cima
+      if (player1_X == 1) {
         move.moviment(box1, court, player1_X, player1_Y);
       }
-    } else if(colid.check2(box1, court) == 3){ //colidi em baixo
-      if(player1_X == -1){
+    } else if (colid.check2(box1, court) == 3) {
+      //colidi em baixo
+      if (player1_X == -1) {
         move.moviment(box1, court, player1_X, player1_Y);
       }
     }
     //verificação do segundo player
-    if(!colid.check(box2, court)){
-      if(box1.movX == 0){
+    if (!colid.check(box2, court)) {
+      if (box1.movX == 0) {
         player2_X = 0;
       } else {
         player2_Y = 0;
       }
       move.moviment(box2, court, player2_X, player2_Y);
-    } else if(colid.check2(box2, court) == 1){ //colidi em cima // ele entra aqui e espera o cara digitar algo diferente
-      if(player2_X == 1){ //se digitou algo para baixo ele executa, caso contrario não
+    } else if (colid.check2(box2, court) == 1) {
+      //colidi em cima // ele entra aqui e espera o cara digitar algo diferente
+      if (player2_X == 1) {
+        //se digitou algo para baixo ele executa, caso contrario não
         move.moviment(box2, court, player2_X, player2_Y);
       }
-    } else if(colid.check2(box2, court) == 3){ //colidi em baixo
-      if(player2_X == -1){
+    } else if (colid.check2(box2, court) == 3) {
+      //colidi em baixo
+      if (player2_X == -1) {
         move.moviment(box2, court, player2_X, player2_Y);
       }
     }
@@ -156,7 +161,7 @@ void main(List<String> arguments) async {
     } 
     
     //zera as variaveis para a proxima iteração
-    
+
     player1_X = player2_X = 0;
     print(Process.runSync("clear", [], runInShell: true).stdout);
     court.show();
